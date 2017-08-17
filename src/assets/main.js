@@ -1,25 +1,24 @@
-$(function() {
+$(document).ready(function() {
+  console.log("Ready!!")
+  $(function() {
 
-  $.ajax({
-  url: 'https://www.codeschool.com/users/Bustakaplan.json',
-  dataType: 'jsonp',
-  success: function(response) {
-    addCourses(response.courses.completed);
-  }
-});
+    $.ajax({
+        url: 'https://www.codeschool.com/users/Bustakaplan.json',
+        dataType: 'jsonp',
+        success: function(response) {
+          addCourses(response.courses.completed);
+        }
+    });
 
-function addCourses(courses) {
-
-  var $badges = $("#badges");
-
-  courses.forEach(function(course){
-    console.log(course);
-
-  var $course = $('div />', {
+  function addCourses(courses) {
+    var $badges = $("#badges");
+    courses.forEach(function(course){
+    // console.log(course);
+    var $course = $('<div />', {
       'class': 'course'
       }).appendTo($badges);
-
-    $('h3 />', {
+console.log($course);
+    $('<h3 />', {
       text: course.title
     }).appendTo($course);
 
@@ -35,5 +34,6 @@ function addCourses(courses) {
     }).appendTo($course);
 
   })
-}
+  }
+});
 });
